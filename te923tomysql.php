@@ -4,9 +4,9 @@
  * Settings
  */
 $mysql_server   = '127.0.0.1';
-$mysql_user     = 'root';
-$mysql_password = 'lokaal';
-$mysql_database = 'te';
+$mysql_user     = 'username';
+$mysql_password = 'password';
+$mysql_database = 'database';
 $te923tool      = './te923tool';
 $debug          = true;
 $mock           = true;
