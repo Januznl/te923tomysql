@@ -9,8 +9,15 @@
 	"license" : [
 		"BSD-3-Clause"
 	],
-	"require" : {
-		"php" : ">=5.3.3",
-		"zendframework/zendframework" : "master-dev"
+	"require": {
+	    "zendframework/zend-config": "2.2.*",
+	    "zendframework/zend-mvc": "2.2.*",
+	    "zendframework/zend-console": "2.2.*",
+	    "zendframework/zend-loader": "2.2.*",
+	    "zendframework/zend-modulemanager": "2.2.*",
+	    "zendframework/zend-form": "2.2.*",
+	    "zendframework/zend-view": "2.2.*",
+	    "zendframework/zend-serializer": "2.2.*",
+	    "zendframework/zend-text": "2.2.*"
 	}
 }

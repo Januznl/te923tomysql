@@ -1,0 +1,18 @@
+{
+    "chmod": "0755",
+    "directories": [
+        "config",
+        "module"
+    ],
+    "finder": [
+        {
+            "name": "*.php",
+            "exclude": ["Tests"],
+            "in": "vendor"
+        }
+    ],
+    "git-version": "package_version",
+    "main": "te923tomysql.php",
+    "output": "te923tomysql.phar",
+    "stub": true
+}
