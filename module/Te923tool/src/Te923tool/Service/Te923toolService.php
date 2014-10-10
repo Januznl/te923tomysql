@@ -1,27 +1,19 @@
-<?php
-class TE923Tool
+<?php 
+
+namespace Te923tool\Service;
+
+use Zend\Debug\Debug;
+
+
+
+class Te923toolService
 {
-    private $debug;
-    private $mock;
-    private $te923tool;
-    
-    /**
-     * Init class
-     * @param boolean $debug
-     * @param boolean $mock
-     */
-    public function init($te923tool, $debug, $mock)
-    {   
-        $this->te923tool    = $te923tool;
-        $this->debug        = ($debug === true)? true : false;
-        $this->mock         =  ($mock  === true)? true : false;
-    }
-    
+
     /**
      * Get RAW current weather data from tool
      * @return string
      */
-    private function getWeatherData()
+    public function getWeatherData()
     {
         if ($this->mock) {
             return time().':21.90:50:14.00:81:20.60:53:13.90:74:i:i:20.10:60:1009.9:i:5:0:i:i:i:i:3412';
@@ -37,7 +29,7 @@ class TE923Tool
      * Get RAW Stored data from tool
      * @return array:string
      */
-    private function getStoredWeatherData()
+    public function getStoredWeatherData()
     {
         if ($this->mock) {
             return array(
@@ -73,6 +65,70 @@ class TE923Tool
             //Get data from te923Tool
     
         }
+    }
+        
+    
+    /**
+     * Maps the data into an human readable array
+     * @param string $data
+     * @return array
+     */
+    public function mapDataToRecord($data)
+    {
+        $data = explode(":",$data);
+    
+        //Convert the Forecast to something readable
+        $forecast = "unknown";
+        switch ($data[15]){
+            case 0:
+                $forecast = "heavy_snow";
+                break;
+            case 1:
+                $forecast = "little_snow";
+                break;
+            case 2:
+                $forecast = "heavy_rain";
+                break;
+            case 3:
+                $forecast = "little_rain";
+                break;
+            case 4:
+                $forecast = "cloudy";
+                break;
+            case 5:
+                $forecast = "some_clouds";
+                break;
+            case 6:
+                $forecast = "sunny";
+                break;
+        }
+    
+        //Convert the returned data into something readable
+        return array(
+            'timestamp'         => $data[0],  // Time of measurement
+            'tempInternal'      => $data[1],  // temperature from internal sensor in ¡C
+            'humInternal'       => $data[2],  // humidity from internal sensor in % rel
+            'tempChannel1'      => $data[3],  // temperature from external channel 1 in ¡C
+            'tempChannel2'      => $data[4],  // temperature from external channel 2 in ¡C
+            'tempChannel3'      => $data[5],  // temperature from external channel 3 in ¡C
+            'tempChannel4'      => $data[6],  // temperature from external channel 4 in ¡C
+            'tempChannel5'      => $data[7],  // temperature from external channel 5 in ¡C
+            'humChannel1'       => $data[8],  // humidity from external channel 1 in % rel
+            'humChannel2'       => $data[9],  // humidity from external channel 2 in % rel
+            'humChannel3'       => $data[10], // humidity from external channel 3 in % rel
+            'humChannel4'       => $data[11], // humidity from external channel 4 in % rel
+            'humChannel5'       => $data[12], // humidity from external channel 5 in % rel
+            'airpressure'       => $data[13], // in mbar
+            'uv'                => $data[14], // UV index
+            'forecast'          => $forecast, // see switch
+            'stormwarning'      => $data[16], // stormwarning; 0 - no warning, 1 - fix your dog
+            'windDirection'     => $data[17], // wind direction in n x 22.5¡; 0 -> north
+            'windSpeed'         => $data[18], // wind speed in m/s
+            'windGust'          => $data[19], // wind gust speed in m/s
+            'windChill'         => $data[20], // windchill temperature in ¡C
+            'rain'              => $data[21], // rain counter (maybe since station starts measurement) as value
+        );
+    
     }
     
 }

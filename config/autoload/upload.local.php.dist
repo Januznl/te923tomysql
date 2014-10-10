@@ -1,0 +1,12 @@
+<?php
+
+
+return array(
+    
+    'upload' => array(
+        'customImageDiskPath' => getcwd().'/public/tempupload/',
+        'customImageWebPath' => '/tafimg/public/tempupload/',
+        
+    ),
+    
+);

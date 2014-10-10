@@ -1,0 +1,36 @@
+<?php
+
+
+//production
+$MYSQL_SRV            = '127.0.0.1';
+$MYSQL_PORT           = '3306';
+$MYSQL_USERNAME       = 'appelflap';
+$MYSQL_PASSWORD       = 'lokaal';
+$MYSQL_DB             = 'img2';
+
+
+return array(
+		'doctrine' => array(
+				'connection' => array(
+						'orm_default' => array(
+								'driverClass' =>'Doctrine\DBAL\Driver\PDOMySql\Driver',
+								'params' => array(
+										'host'     => $MYSQL_SRV,
+										'port'     => $MYSQL_PORT,
+										'user'     => $MYSQL_USERNAME,
+										'password' => $MYSQL_PASSWORD,
+										'dbname'   => $MYSQL_DB,
+								),
+
+								'doctrine_type_mappings' => array(
+										'enum' => 'string'
+								),
+						),
+
+				),
+
+
+
+		)
+
+);

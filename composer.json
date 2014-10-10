@@ -1,0 +1,16 @@
+{
+	"name" : "bis/te923tomysql",
+	"description" : "TE923 To Mysql",
+	"keywords" : [
+		"te923",
+		"mysql"
+	],
+	"homepage" : "http://te923tomysql.com/",
+	"license" : [
+		"BSD-3-Clause"
+	],
+	"require" : {
+		"php" : ">=5.3.3",
+		"zendframework/zendframework" : "master-dev"
+	}
+}
