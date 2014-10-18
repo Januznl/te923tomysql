@@ -1,0 +1,5 @@
+.project
+composer.phar
+box.phar
+.settings
+.DS_Store
