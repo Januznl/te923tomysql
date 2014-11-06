@@ -12,4 +12,5 @@ var_dump($config);
 
 $application = new Application('TE923ToMysql', '0.1-dev');
 $application->add(new Command\HelloCommand());
+$application->add(new Command\DoctrineCommand($application));
 $application->run();
