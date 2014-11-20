@@ -7,7 +7,7 @@ use Doctrine\ORM\EntityManager;
 
 
 $conn = Yaml::parse(__DIR__.'/config.yml');
-$config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/src"), $isDevMode);
+$config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/../src/Entity/"), $isDevMode, null, null, false);
 
 $em = EntityManager::create($conn, $config);
 
