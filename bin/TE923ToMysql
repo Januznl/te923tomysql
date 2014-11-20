@@ -6,11 +6,20 @@ require __DIR__.'/../vendor/autoload.php';
 use TE923ToMysql\Command;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Yaml\Yaml;
+use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\EntityManager;
 
-$config = Yaml::parse(__DIR__.'/../config/config.yml');
-var_dump($config);
+
+
+$conn = Yaml::parse(__DIR__.'/../config/config.yml');
+$config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/src"), $isDevMode);
+
+$em = EntityManager::create($conn, $config);
+
+
+
 
 $application = new Application('TE923ToMysql', '0.1-dev');
 $application->add(new Command\HelloCommand());
-$application->add(new Command\DoctrineCommand($application));
+$application->add(new Command\DoctrineCommand($em));
 $application->run();

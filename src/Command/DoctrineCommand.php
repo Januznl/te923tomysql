@@ -20,17 +20,12 @@ class DoctrineCommand extends ContainerAwareCommand
     
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $doctrine = $this->app->getContainer()->get('doctrine');
 
-        $em = $doctrine->getEntityManager();
+        $em = $this->em;
         $db = $em->getConnection();
 
-        $helperSet = $this->getHelperSet();
-        $helperSet->set( new ConnectionHelper( $db ), 'db' );
-        $helperSet->set( new EntityManagerHelper( $em ), 'em' );
-
-	$output = ConsoleRunner::createHelperSet($entityManager);
-        parent::execute( $input, $output );
+        $output->writeln('Command with Entity manager !');
+        
     }
 
 }

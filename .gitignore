@@ -2,6 +2,7 @@
 composer.phar
 box.phar
 .settings
+.buildpath
 .DS_Store
 /config/config.yml
 /vendor/
