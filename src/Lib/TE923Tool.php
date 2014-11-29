@@ -35,6 +35,22 @@ class TE923Tool
         }
     
     }
+
+    /**
+     * Get RAW current weatherstation status data from tool
+     * @return string
+     */
+    private function getStatusData()
+    {
+        if ($this->mock) {
+            return '0x29:0x17:0x14:0x10:0x26:1:1:1:1:1:1:1:1';
+        } else {
+            //Get data from te923Tool
+    
+    
+        }
+    
+    }
     
     /**
      * Get RAW Stored data from tool

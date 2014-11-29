@@ -6,11 +6,11 @@ class Mapper
 {
     
     /**
-     * Maps the data into an human readable array
+     * Maps the weather data into an human readable array
      * @param string $data
      * @return array  
      */
-    public function mapDataToRecord($data)
+    public function mapWeatherDataToRecord($data)
     {
         $data = explode(":",$data);
         
@@ -64,6 +64,35 @@ class Mapper
             'windGust'          => $data[19], // wind gust speed in m/s
             'windChill'         => $data[20], // windchill temperature in Celsius
             'rain'              => $data[21], // rain counter (maybe since station starts measurement) as value
+        );
+        
+    }
+
+    /**
+     * Maps the status data into an human readable array
+     * @param string $data
+     * @return array  
+     */
+    public function mapStatusDataToRecord($data)
+    {
+        $data = explode(":",$data);
+        
+        
+        //Convert the returned data into something readable
+        return array(
+            'firmwareVersionSystem'     => $data[0],  // software version of system controller
+            'firmwareVersionBarometer'  => $data[1],  // software version of barometer
+            'firmwareVersionUV'         => $data[2],  // software version of UV and channel controller
+            'firmwareVersionRain'       => $data[3],  // software version of rain controller
+            'firmwareVersionWind'       => $data[4],  // software version of wind controller
+            'battStatusRain'            => $data[5],  // battery of rain sensor (1-good (not present), 0-low)
+            'battStatusUV'              => $data[6],  // battery of UV sensor (1-good (not present), 0-low)
+            'battStatusWind'            => $data[7],  // battery of wind sensor (1-good (not present), 0-low) 
+            'battStatusSensor1'         => $data[12],  // battery of sensor 1 (1-good (not present), 0-low)
+            'battStatusSensor2'         => $data[11],  // battery of sensor 2 (1-good (not present), 0-low)
+            'battStatusSensor3'         => $data[10],  // battery of sensor 3 (1-good (not present), 0-low)
+            'battStatusSensor4'         => $data[9],  // battery of sensor 4 (1-good (not present), 0-low)
+            'battStatusSensor5'         => $data[8],  // battery of sensor 5 (1-good (not present), 0-low)
         );
         
     }
