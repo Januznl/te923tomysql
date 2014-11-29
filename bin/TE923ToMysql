@@ -8,18 +8,20 @@ use Symfony\Component\Console\Application;
 use Symfony\Component\Yaml\Yaml;
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
+use TE923ToMysql\Lib as Lib;
 
-
-
+$isDevMode  = false;
 $conn = Yaml::parse(__DIR__.'/../config/config.yml');
 $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/src"), $isDevMode, null, null, false);
 
 $em = EntityManager::create($conn, $config);
 
+$TE923Tool = new Lib\TE923Tool();
 
-
+$TE923Tool->init('',true,true);
 
 $application = new Application('TE923ToMysql', '0.1-dev');
 $application->add(new Command\HelloCommand());
-$application->add(new Command\DoctrineCommand($em));
+$application->add(new Command\DoctrineCommand($em, $TE923Tool));
+$application->add(new Command\StatusCommand($em, $TE923Tool));
 $application->run();

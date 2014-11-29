@@ -12,10 +12,16 @@ abstract class ContainerAwareCommand extends Command {
     /**
      * @var Silex\Application
      */
-    protected $app;
+    protected $em;
 
-    public function __construct( $em, $name = null) {
+    /**
+     * @var TE923ToMysql\Lib\TE923Tool
+     */
+    protected $te923tool;
+
+    public function __construct( $em, $TE923Tool, $name = null) {
         parent::__construct($name);
         $this->em = $em;
+        $this->te923tool = $TE923Tool;
     }
 }

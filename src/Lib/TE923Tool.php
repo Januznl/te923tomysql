@@ -24,7 +24,7 @@ class TE923Tool
      * Get RAW current weather data from tool
      * @return string
      */
-    private function getWeatherData()
+    public function getWeatherData()
     {
         if ($this->mock) {
             return time().':21.90:50:14.00:81:20.60:53:13.90:74:i:i:20.10:60:1009.9:i:5:0:i:i:i:i:3412';
@@ -40,7 +40,7 @@ class TE923Tool
      * Get RAW current weatherstation status data from tool
      * @return string
      */
-    private function getStatusData()
+    public function getStatusData()
     {
         if ($this->mock) {
             return '0x29:0x17:0x14:0x10:0x26:1:1:1:1:1:1:1:1';
