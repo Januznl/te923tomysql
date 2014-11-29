@@ -1,6 +1,6 @@
 <?php
 
-
+namespace TE923ToMysql\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -42,7 +42,6 @@ class Archive
      */
     private $barometer;
 
-
     /**
      * @var float
      *
@@ -50,14 +49,12 @@ class Archive
      */
     private $intemp;
 
-
     /**
      * @var float
      *
      * @ORM\Column(name="inHumidity", type="float", precision=10, scale=0, nullable=true)
      */
     private $inhumidity;
-
 
     /**
      * @var float
@@ -104,14 +101,14 @@ class Archive
     /**
      * @var string
      *
-     * @ORM\Column(name="forecast", type="string" nullable=true)
+     * @ORM\Column(name="forecast", type="string", length=255, nullable=true)
      */
     private $forecast;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="stormwarning", type="integer" nullable=true)
+     * @ORM\Column(name="stormwarning", type="integer", nullable=true)
      */
     private $stormwarning;
 
@@ -121,7 +118,6 @@ class Archive
      * @ORM\Column(name="sensor1Temp", type="float", precision=10, scale=0, nullable=true)
      */
     private $sensor1temp;
-
 
     /**
      * @var float
@@ -137,7 +133,6 @@ class Archive
      */
     private $sensor2temp;
 
-
     /**
      * @var float
      *
@@ -151,7 +146,6 @@ class Archive
      * @ORM\Column(name="sensor3Temp", type="float", precision=10, scale=0, nullable=true)
      */
     private $sensor3temp;
-
 
     /**
      * @var float
@@ -167,7 +161,6 @@ class Archive
      */
     private $sensor4temp;
 
-
     /**
      * @var float
      *
@@ -182,15 +175,12 @@ class Archive
      */
     private $sensor5temp;
 
-
     /**
      * @var float
      *
      * @ORM\Column(name="sensor5Humid", type="float", precision=10, scale=0, nullable=true)
      */
     private $sensor5humid;
-
-
 
     /**
      * @var float
@@ -240,7 +230,6 @@ class Archive
      * @ORM\Column(name="sensor5BatteryStatus", type="float", precision=10, scale=0, nullable=true)
      */
     private $sensor5batterystatus;
-
 
 
 
@@ -324,52 +313,6 @@ class Archive
     }
 
     /**
-     * Set pressure
-     *
-     * @param float $pressure
-     * @return Archive
-     */
-    public function setPressure($pressure)
-    {
-        $this->pressure = $pressure;
-
-        return $this;
-    }
-
-    /**
-     * Get pressure
-     *
-     * @return float 
-     */
-    public function getPressure()
-    {
-        return $this->pressure;
-    }
-
-    /**
-     * Set altimeter
-     *
-     * @param float $altimeter
-     * @return Archive
-     */
-    public function setAltimeter($altimeter)
-    {
-        $this->altimeter = $altimeter;
-
-        return $this;
-    }
-
-    /**
-     * Get altimeter
-     *
-     * @return float 
-     */
-    public function getAltimeter()
-    {
-        return $this->altimeter;
-    }
-
-    /**
      * Set intemp
      *
      * @param float $intemp
@@ -393,29 +336,6 @@ class Archive
     }
 
     /**
-     * Set outtemp
-     *
-     * @param float $outtemp
-     * @return Archive
-     */
-    public function setOuttemp($outtemp)
-    {
-        $this->outtemp = $outtemp;
-
-        return $this;
-    }
-
-    /**
-     * Get outtemp
-     *
-     * @return float 
-     */
-    public function getOuttemp()
-    {
-        return $this->outtemp;
-    }
-
-    /**
      * Set inhumidity
      *
      * @param float $inhumidity
@@ -436,29 +356,6 @@ class Archive
     public function getInhumidity()
     {
         return $this->inhumidity;
-    }
-
-    /**
-     * Set outhumidity
-     *
-     * @param float $outhumidity
-     * @return Archive
-     */
-    public function setOuthumidity($outhumidity)
-    {
-        $this->outhumidity = $outhumidity;
-
-        return $this;
-    }
-
-    /**
-     * Get outhumidity
-     *
-     * @return float 
-     */
-    public function getOuthumidity()
-    {
-        return $this->outhumidity;
     }
 
     /**
@@ -531,52 +428,6 @@ class Archive
     }
 
     /**
-     * Set windgustdir
-     *
-     * @param float $windgustdir
-     * @return Archive
-     */
-    public function setWindgustdir($windgustdir)
-    {
-        $this->windgustdir = $windgustdir;
-
-        return $this;
-    }
-
-    /**
-     * Get windgustdir
-     *
-     * @return float 
-     */
-    public function getWindgustdir()
-    {
-        return $this->windgustdir;
-    }
-
-    /**
-     * Set rainrate
-     *
-     * @param float $rainrate
-     * @return Archive
-     */
-    public function setRainrate($rainrate)
-    {
-        $this->rainrate = $rainrate;
-
-        return $this;
-    }
-
-    /**
-     * Get rainrate
-     *
-     * @return float 
-     */
-    public function getRainrate()
-    {
-        return $this->rainrate;
-    }
-
-    /**
      * Set rain
      *
      * @param float $rain
@@ -597,29 +448,6 @@ class Archive
     public function getRain()
     {
         return $this->rain;
-    }
-
-    /**
-     * Set dewpoint
-     *
-     * @param float $dewpoint
-     * @return Archive
-     */
-    public function setDewpoint($dewpoint)
-    {
-        $this->dewpoint = $dewpoint;
-
-        return $this;
-    }
-
-    /**
-     * Get dewpoint
-     *
-     * @return float 
-     */
-    public function getDewpoint()
-    {
-        return $this->dewpoint;
     }
 
     /**
@@ -646,75 +474,6 @@ class Archive
     }
 
     /**
-     * Set heatindex
-     *
-     * @param float $heatindex
-     * @return Archive
-     */
-    public function setHeatindex($heatindex)
-    {
-        $this->heatindex = $heatindex;
-
-        return $this;
-    }
-
-    /**
-     * Get heatindex
-     *
-     * @return float 
-     */
-    public function getHeatindex()
-    {
-        return $this->heatindex;
-    }
-
-    /**
-     * Set et
-     *
-     * @param float $et
-     * @return Archive
-     */
-    public function setEt($et)
-    {
-        $this->et = $et;
-
-        return $this;
-    }
-
-    /**
-     * Get et
-     *
-     * @return float 
-     */
-    public function getEt()
-    {
-        return $this->et;
-    }
-
-    /**
-     * Set radiation
-     *
-     * @param float $radiation
-     * @return Archive
-     */
-    public function setRadiation($radiation)
-    {
-        $this->radiation = $radiation;
-
-        return $this;
-    }
-
-    /**
-     * Get radiation
-     *
-     * @return float 
-     */
-    public function getRadiation()
-    {
-        return $this->radiation;
-    }
-
-    /**
      * Set uv
      *
      * @param float $uv
@@ -738,601 +497,279 @@ class Archive
     }
 
     /**
-     * Set extratemp1
+     * Set forecast
      *
-     * @param float $extratemp1
+     * @param string $forecast
      * @return Archive
      */
-    public function setExtratemp1($extratemp1)
+    public function setForecast($forecast)
     {
-        $this->extratemp1 = $extratemp1;
+        $this->forecast = $forecast;
 
         return $this;
     }
 
     /**
-     * Get extratemp1
+     * Get forecast
      *
-     * @return float 
+     * @return string 
      */
-    public function getExtratemp1()
+    public function getForecast()
     {
-        return $this->extratemp1;
+        return $this->forecast;
     }
 
     /**
-     * Set extratemp2
+     * Set stormwarning
      *
-     * @param float $extratemp2
+     * @param integer $stormwarning
      * @return Archive
      */
-    public function setExtratemp2($extratemp2)
+    public function setStormwarning($stormwarning)
     {
-        $this->extratemp2 = $extratemp2;
+        $this->stormwarning = $stormwarning;
 
         return $this;
     }
 
     /**
-     * Get extratemp2
+     * Get stormwarning
      *
-     * @return float 
+     * @return integer 
      */
-    public function getExtratemp2()
+    public function getStormwarning()
     {
-        return $this->extratemp2;
+        return $this->stormwarning;
     }
 
     /**
-     * Set extratemp3
+     * Set sensor1temp
      *
-     * @param float $extratemp3
+     * @param float $sensor1temp
      * @return Archive
      */
-    public function setExtratemp3($extratemp3)
+    public function setSensor1temp($sensor1temp)
     {
-        $this->extratemp3 = $extratemp3;
+        $this->sensor1temp = $sensor1temp;
 
         return $this;
     }
 
     /**
-     * Get extratemp3
+     * Get sensor1temp
      *
      * @return float 
      */
-    public function getExtratemp3()
+    public function getSensor1temp()
     {
-        return $this->extratemp3;
+        return $this->sensor1temp;
     }
 
     /**
-     * Set soiltemp1
+     * Set sensor1humid
      *
-     * @param float $soiltemp1
+     * @param float $sensor1humid
      * @return Archive
      */
-    public function setSoiltemp1($soiltemp1)
+    public function setSensor1humid($sensor1humid)
     {
-        $this->soiltemp1 = $soiltemp1;
+        $this->sensor1humid = $sensor1humid;
 
         return $this;
     }
 
     /**
-     * Get soiltemp1
+     * Get sensor1humid
      *
      * @return float 
      */
-    public function getSoiltemp1()
+    public function getSensor1humid()
     {
-        return $this->soiltemp1;
+        return $this->sensor1humid;
     }
 
     /**
-     * Set soiltemp2
+     * Set sensor2temp
      *
-     * @param float $soiltemp2
+     * @param float $sensor2temp
      * @return Archive
      */
-    public function setSoiltemp2($soiltemp2)
+    public function setSensor2temp($sensor2temp)
     {
-        $this->soiltemp2 = $soiltemp2;
+        $this->sensor2temp = $sensor2temp;
 
         return $this;
     }
 
     /**
-     * Get soiltemp2
+     * Get sensor2temp
      *
      * @return float 
      */
-    public function getSoiltemp2()
+    public function getSensor2temp()
     {
-        return $this->soiltemp2;
+        return $this->sensor2temp;
     }
 
     /**
-     * Set soiltemp3
+     * Set sensor2humid
      *
-     * @param float $soiltemp3
+     * @param float $sensor2humid
      * @return Archive
      */
-    public function setSoiltemp3($soiltemp3)
+    public function setSensor2humid($sensor2humid)
     {
-        $this->soiltemp3 = $soiltemp3;
+        $this->sensor2humid = $sensor2humid;
 
         return $this;
     }
 
     /**
-     * Get soiltemp3
+     * Get sensor2humid
      *
      * @return float 
      */
-    public function getSoiltemp3()
+    public function getSensor2humid()
     {
-        return $this->soiltemp3;
+        return $this->sensor2humid;
     }
 
     /**
-     * Set soiltemp4
+     * Set sensor3temp
      *
-     * @param float $soiltemp4
+     * @param float $sensor3temp
      * @return Archive
      */
-    public function setSoiltemp4($soiltemp4)
+    public function setSensor3temp($sensor3temp)
     {
-        $this->soiltemp4 = $soiltemp4;
+        $this->sensor3temp = $sensor3temp;
 
         return $this;
     }
 
     /**
-     * Get soiltemp4
+     * Get sensor3temp
      *
      * @return float 
      */
-    public function getSoiltemp4()
+    public function getSensor3temp()
     {
-        return $this->soiltemp4;
+        return $this->sensor3temp;
     }
 
     /**
-     * Set leaftemp1
+     * Set sensor3humid
      *
-     * @param float $leaftemp1
+     * @param float $sensor3humid
      * @return Archive
      */
-    public function setLeaftemp1($leaftemp1)
+    public function setSensor3humid($sensor3humid)
     {
-        $this->leaftemp1 = $leaftemp1;
+        $this->sensor3humid = $sensor3humid;
 
         return $this;
     }
 
     /**
-     * Get leaftemp1
+     * Get sensor3humid
      *
      * @return float 
      */
-    public function getLeaftemp1()
+    public function getSensor3humid()
     {
-        return $this->leaftemp1;
+        return $this->sensor3humid;
     }
 
     /**
-     * Set leaftemp2
+     * Set sensor4temp
      *
-     * @param float $leaftemp2
+     * @param float $sensor4temp
      * @return Archive
      */
-    public function setLeaftemp2($leaftemp2)
+    public function setSensor4temp($sensor4temp)
     {
-        $this->leaftemp2 = $leaftemp2;
+        $this->sensor4temp = $sensor4temp;
 
         return $this;
     }
 
     /**
-     * Get leaftemp2
+     * Get sensor4temp
      *
      * @return float 
      */
-    public function getLeaftemp2()
+    public function getSensor4temp()
     {
-        return $this->leaftemp2;
+        return $this->sensor4temp;
     }
 
     /**
-     * Set extrahumid1
+     * Set sensor4humid
      *
-     * @param float $extrahumid1
+     * @param float $sensor4humid
      * @return Archive
      */
-    public function setExtrahumid1($extrahumid1)
+    public function setSensor4humid($sensor4humid)
     {
-        $this->extrahumid1 = $extrahumid1;
+        $this->sensor4humid = $sensor4humid;
 
         return $this;
     }
 
     /**
-     * Get extrahumid1
+     * Get sensor4humid
      *
      * @return float 
      */
-    public function getExtrahumid1()
+    public function getSensor4humid()
     {
-        return $this->extrahumid1;
+        return $this->sensor4humid;
     }
 
     /**
-     * Set extrahumid2
+     * Set sensor5temp
      *
-     * @param float $extrahumid2
+     * @param float $sensor5temp
      * @return Archive
      */
-    public function setExtrahumid2($extrahumid2)
+    public function setSensor5temp($sensor5temp)
     {
-        $this->extrahumid2 = $extrahumid2;
+        $this->sensor5temp = $sensor5temp;
 
         return $this;
     }
 
     /**
-     * Get extrahumid2
+     * Get sensor5temp
      *
      * @return float 
      */
-    public function getExtrahumid2()
+    public function getSensor5temp()
     {
-        return $this->extrahumid2;
+        return $this->sensor5temp;
     }
 
     /**
-     * Set soilmoist1
+     * Set sensor5humid
      *
-     * @param float $soilmoist1
+     * @param float $sensor5humid
      * @return Archive
      */
-    public function setSoilmoist1($soilmoist1)
+    public function setSensor5humid($sensor5humid)
     {
-        $this->soilmoist1 = $soilmoist1;
+        $this->sensor5humid = $sensor5humid;
 
         return $this;
     }
 
     /**
-     * Get soilmoist1
+     * Get sensor5humid
      *
      * @return float 
      */
-    public function getSoilmoist1()
+    public function getSensor5humid()
     {
-        return $this->soilmoist1;
-    }
-
-    /**
-     * Set soilmoist2
-     *
-     * @param float $soilmoist2
-     * @return Archive
-     */
-    public function setSoilmoist2($soilmoist2)
-    {
-        $this->soilmoist2 = $soilmoist2;
-
-        return $this;
-    }
-
-    /**
-     * Get soilmoist2
-     *
-     * @return float 
-     */
-    public function getSoilmoist2()
-    {
-        return $this->soilmoist2;
-    }
-
-    /**
-     * Set soilmoist3
-     *
-     * @param float $soilmoist3
-     * @return Archive
-     */
-    public function setSoilmoist3($soilmoist3)
-    {
-        $this->soilmoist3 = $soilmoist3;
-
-        return $this;
-    }
-
-    /**
-     * Get soilmoist3
-     *
-     * @return float 
-     */
-    public function getSoilmoist3()
-    {
-        return $this->soilmoist3;
-    }
-
-    /**
-     * Set soilmoist4
-     *
-     * @param float $soilmoist4
-     * @return Archive
-     */
-    public function setSoilmoist4($soilmoist4)
-    {
-        $this->soilmoist4 = $soilmoist4;
-
-        return $this;
-    }
-
-    /**
-     * Get soilmoist4
-     *
-     * @return float 
-     */
-    public function getSoilmoist4()
-    {
-        return $this->soilmoist4;
-    }
-
-    /**
-     * Set leafwet1
-     *
-     * @param float $leafwet1
-     * @return Archive
-     */
-    public function setLeafwet1($leafwet1)
-    {
-        $this->leafwet1 = $leafwet1;
-
-        return $this;
-    }
-
-    /**
-     * Get leafwet1
-     *
-     * @return float 
-     */
-    public function getLeafwet1()
-    {
-        return $this->leafwet1;
-    }
-
-    /**
-     * Set leafwet2
-     *
-     * @param float $leafwet2
-     * @return Archive
-     */
-    public function setLeafwet2($leafwet2)
-    {
-        $this->leafwet2 = $leafwet2;
-
-        return $this;
-    }
-
-    /**
-     * Get leafwet2
-     *
-     * @return float 
-     */
-    public function getLeafwet2()
-    {
-        return $this->leafwet2;
-    }
-
-    /**
-     * Set rxcheckpercent
-     *
-     * @param float $rxcheckpercent
-     * @return Archive
-     */
-    public function setRxcheckpercent($rxcheckpercent)
-    {
-        $this->rxcheckpercent = $rxcheckpercent;
-
-        return $this;
-    }
-
-    /**
-     * Get rxcheckpercent
-     *
-     * @return float 
-     */
-    public function getRxcheckpercent()
-    {
-        return $this->rxcheckpercent;
-    }
-
-    /**
-     * Set txbatterystatus
-     *
-     * @param float $txbatterystatus
-     * @return Archive
-     */
-    public function setTxbatterystatus($txbatterystatus)
-    {
-        $this->txbatterystatus = $txbatterystatus;
-
-        return $this;
-    }
-
-    /**
-     * Get txbatterystatus
-     *
-     * @return float 
-     */
-    public function getTxbatterystatus()
-    {
-        return $this->txbatterystatus;
-    }
-
-    /**
-     * Set consbatteryvoltage
-     *
-     * @param float $consbatteryvoltage
-     * @return Archive
-     */
-    public function setConsbatteryvoltage($consbatteryvoltage)
-    {
-        $this->consbatteryvoltage = $consbatteryvoltage;
-
-        return $this;
-    }
-
-    /**
-     * Get consbatteryvoltage
-     *
-     * @return float 
-     */
-    public function getConsbatteryvoltage()
-    {
-        return $this->consbatteryvoltage;
-    }
-
-    /**
-     * Set hail
-     *
-     * @param float $hail
-     * @return Archive
-     */
-    public function setHail($hail)
-    {
-        $this->hail = $hail;
-
-        return $this;
-    }
-
-    /**
-     * Get hail
-     *
-     * @return float 
-     */
-    public function getHail()
-    {
-        return $this->hail;
-    }
-
-    /**
-     * Set hailrate
-     *
-     * @param float $hailrate
-     * @return Archive
-     */
-    public function setHailrate($hailrate)
-    {
-        $this->hailrate = $hailrate;
-
-        return $this;
-    }
-
-    /**
-     * Get hailrate
-     *
-     * @return float 
-     */
-    public function getHailrate()
-    {
-        return $this->hailrate;
-    }
-
-    /**
-     * Set heatingtemp
-     *
-     * @param float $heatingtemp
-     * @return Archive
-     */
-    public function setHeatingtemp($heatingtemp)
-    {
-        $this->heatingtemp = $heatingtemp;
-
-        return $this;
-    }
-
-    /**
-     * Get heatingtemp
-     *
-     * @return float 
-     */
-    public function getHeatingtemp()
-    {
-        return $this->heatingtemp;
-    }
-
-    /**
-     * Set heatingvoltage
-     *
-     * @param float $heatingvoltage
-     * @return Archive
-     */
-    public function setHeatingvoltage($heatingvoltage)
-    {
-        $this->heatingvoltage = $heatingvoltage;
-
-        return $this;
-    }
-
-    /**
-     * Get heatingvoltage
-     *
-     * @return float 
-     */
-    public function getHeatingvoltage()
-    {
-        return $this->heatingvoltage;
-    }
-
-    /**
-     * Set supplyvoltage
-     *
-     * @param float $supplyvoltage
-     * @return Archive
-     */
-    public function setSupplyvoltage($supplyvoltage)
-    {
-        $this->supplyvoltage = $supplyvoltage;
-
-        return $this;
-    }
-
-    /**
-     * Get supplyvoltage
-     *
-     * @return float 
-     */
-    public function getSupplyvoltage()
-    {
-        return $this->supplyvoltage;
-    }
-
-    /**
-     * Set referencevoltage
-     *
-     * @param float $referencevoltage
-     * @return Archive
-     */
-    public function setReferencevoltage($referencevoltage)
-    {
-        $this->referencevoltage = $referencevoltage;
-
-        return $this;
-    }
-
-    /**
-     * Get referencevoltage
-     *
-     * @return float 
-     */
-    public function getReferencevoltage()
-    {
-        return $this->referencevoltage;
+        return $this->sensor5humid;
     }
 
     /**
@@ -1382,48 +819,117 @@ class Archive
     }
 
     /**
-     * Set outtempbatterystatus
+     * Set sensor1batterystatus
      *
-     * @param float $outtempbatterystatus
+     * @param float $sensor1batterystatus
      * @return Archive
      */
-    public function setOuttempbatterystatus($outtempbatterystatus)
+    public function setSensor1batterystatus($sensor1batterystatus)
     {
-        $this->outtempbatterystatus = $outtempbatterystatus;
+        $this->sensor1batterystatus = $sensor1batterystatus;
 
         return $this;
     }
 
     /**
-     * Get outtempbatterystatus
+     * Get sensor1batterystatus
      *
      * @return float 
      */
-    public function getOuttempbatterystatus()
+    public function getSensor1batterystatus()
     {
-        return $this->outtempbatterystatus;
+        return $this->sensor1batterystatus;
     }
 
     /**
-     * Set intempbatterystatus
+     * Set sensor2batterystatus
      *
-     * @param float $intempbatterystatus
+     * @param float $sensor2batterystatus
      * @return Archive
      */
-    public function setIntempbatterystatus($intempbatterystatus)
+    public function setSensor2batterystatus($sensor2batterystatus)
     {
-        $this->intempbatterystatus = $intempbatterystatus;
+        $this->sensor2batterystatus = $sensor2batterystatus;
 
         return $this;
     }
 
     /**
-     * Get intempbatterystatus
+     * Get sensor2batterystatus
      *
      * @return float 
      */
-    public function getIntempbatterystatus()
+    public function getSensor2batterystatus()
     {
-        return $this->intempbatterystatus;
+        return $this->sensor2batterystatus;
+    }
+
+    /**
+     * Set sensor3batterystatus
+     *
+     * @param float $sensor3batterystatus
+     * @return Archive
+     */
+    public function setSensor3batterystatus($sensor3batterystatus)
+    {
+        $this->sensor3batterystatus = $sensor3batterystatus;
+
+        return $this;
+    }
+
+    /**
+     * Get sensor3batterystatus
+     *
+     * @return float 
+     */
+    public function getSensor3batterystatus()
+    {
+        return $this->sensor3batterystatus;
+    }
+
+    /**
+     * Set sensor4batterystatus
+     *
+     * @param float $sensor4batterystatus
+     * @return Archive
+     */
+    public function setSensor4batterystatus($sensor4batterystatus)
+    {
+        $this->sensor4batterystatus = $sensor4batterystatus;
+
+        return $this;
+    }
+
+    /**
+     * Get sensor4batterystatus
+     *
+     * @return float 
+     */
+    public function getSensor4batterystatus()
+    {
+        return $this->sensor4batterystatus;
+    }
+
+    /**
+     * Set sensor5batterystatus
+     *
+     * @param float $sensor5batterystatus
+     * @return Archive
+     */
+    public function setSensor5batterystatus($sensor5batterystatus)
+    {
+        $this->sensor5batterystatus = $sensor5batterystatus;
+
+        return $this;
+    }
+
+    /**
+     * Get sensor5batterystatus
+     *
+     * @return float 
+     */
+    public function getSensor5batterystatus()
+    {
+        return $this->sensor5batterystatus;
     }
 }

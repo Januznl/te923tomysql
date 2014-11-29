@@ -1,6 +1,6 @@
 <?php
 
-
+namespace TE923ToMysql\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
