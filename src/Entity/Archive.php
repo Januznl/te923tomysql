@@ -42,19 +42,6 @@ class Archive
      */
     private $barometer;
 
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="pressure", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $pressure;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="altimeter", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $altimeter;
 
     /**
      * @var float
@@ -63,12 +50,6 @@ class Archive
      */
     private $intemp;
 
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="outTemp", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $outtemp;
 
     /**
      * @var float
@@ -77,12 +58,6 @@ class Archive
      */
     private $inhumidity;
 
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="outHumidity", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $outhumidity;
 
     /**
      * @var float
@@ -108,30 +83,9 @@ class Archive
     /**
      * @var float
      *
-     * @ORM\Column(name="windGustDir", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $windgustdir;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="rainRate", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $rainrate;
-
-    /**
-     * @var float
-     *
      * @ORM\Column(name="rain", type="float", precision=10, scale=0, nullable=true)
      */
     private $rain;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="dewpoint", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $dewpoint;
 
     /**
      * @var float
@@ -143,212 +97,100 @@ class Archive
     /**
      * @var float
      *
-     * @ORM\Column(name="heatindex", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $heatindex;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="ET", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $et;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="radiation", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $radiation;
-
-    /**
-     * @var float
-     *
      * @ORM\Column(name="UV", type="float", precision=10, scale=0, nullable=true)
      */
     private $uv;
 
     /**
-     * @var float
+     * @var string
      *
-     * @ORM\Column(name="extraTemp1", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="forecast", type="string" nullable=true)
      */
-    private $extratemp1;
+    private $forecast;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="stormwarning", type="integer" nullable=true)
+     */
+    private $stormwarning;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="extraTemp2", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="sensor1Temp", type="float", precision=10, scale=0, nullable=true)
      */
-    private $extratemp2;
+    private $sensor1temp;
+
 
     /**
      * @var float
      *
-     * @ORM\Column(name="extraTemp3", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="sensor1Humid", type="float", precision=10, scale=0, nullable=true)
      */
-    private $extratemp3;
+    private $sensor1humid;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="soilTemp1", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="sensor2Temp", type="float", precision=10, scale=0, nullable=true)
      */
-    private $soiltemp1;
+    private $sensor2temp;
+
 
     /**
      * @var float
      *
-     * @ORM\Column(name="soilTemp2", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="sensor2Humid", type="float", precision=10, scale=0, nullable=true)
      */
-    private $soiltemp2;
+    private $sensor2humid;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="soilTemp3", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="sensor3Temp", type="float", precision=10, scale=0, nullable=true)
      */
-    private $soiltemp3;
+    private $sensor3temp;
+
 
     /**
      * @var float
      *
-     * @ORM\Column(name="soilTemp4", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="sensor3Humid", type="float", precision=10, scale=0, nullable=true)
      */
-    private $soiltemp4;
+    private $sensor3humid;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="leafTemp1", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="sensor4Temp", type="float", precision=10, scale=0, nullable=true)
      */
-    private $leaftemp1;
+    private $sensor4temp;
+
 
     /**
      * @var float
      *
-     * @ORM\Column(name="leafTemp2", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="sensor4Humid", type="float", precision=10, scale=0, nullable=true)
      */
-    private $leaftemp2;
+    private $sensor4humid;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="extraHumid1", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="sensor5Temp", type="float", precision=10, scale=0, nullable=true)
      */
-    private $extrahumid1;
+    private $sensor5temp;
+
 
     /**
      * @var float
      *
-     * @ORM\Column(name="extraHumid2", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="sensor5Humid", type="float", precision=10, scale=0, nullable=true)
      */
-    private $extrahumid2;
+    private $sensor5humid;
 
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="soilMoist1", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $soilmoist1;
 
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="soilMoist2", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $soilmoist2;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="soilMoist3", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $soilmoist3;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="soilMoist4", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $soilmoist4;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="leafWet1", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $leafwet1;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="leafWet2", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $leafwet2;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="rxCheckPercent", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $rxcheckpercent;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="txBatteryStatus", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $txbatterystatus;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="consBatteryVoltage", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $consbatteryvoltage;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="hail", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $hail;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="hailRate", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $hailrate;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="heatingTemp", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $heatingtemp;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="heatingVoltage", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $heatingvoltage;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="supplyVoltage", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $supplyvoltage;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="referenceVoltage", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $referencevoltage;
 
     /**
      * @var float
@@ -367,16 +209,38 @@ class Archive
     /**
      * @var float
      *
-     * @ORM\Column(name="outTempBatteryStatus", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="sensor1BatteryStatus", type="float", precision=10, scale=0, nullable=true)
      */
-    private $outtempbatterystatus;
+    private $sensor1batterystatus;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="inTempBatteryStatus", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="sensor2BatteryStatus", type="float", precision=10, scale=0, nullable=true)
      */
-    private $intempbatterystatus;
+    private $sensor2batterystatus;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="sensor3BatteryStatus", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $sensor3batterystatus;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="sensor4BatteryStatus", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $sensor4batterystatus;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="sensor5BatteryStatus", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $sensor5batterystatus;
+
 
 
 
