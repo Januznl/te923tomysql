@@ -6,3 +6,4 @@ box.phar
 .DS_Store
 /config/config.yml
 /vendor/
+.idea/

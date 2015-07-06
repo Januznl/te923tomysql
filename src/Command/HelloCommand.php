@@ -13,6 +13,7 @@ class HelloCommand extends Command
         $this
             ->setName('hello')
             ->setDescription('Say hello')
+
         ;
     }
 
@@ -21,4 +22,3 @@ class HelloCommand extends Command
         $output->writeln('Hello World');
     }
 }
-?>

@@ -8,13 +8,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use Symfony\Component\Console\Application;
 
-abstract class ContainerAwareCommand extends Command {
-    /**
-     * @var Silex\Application
-     */
+abstract class ContainerAwareCommand extends Command
+{
     protected $app;
 
-    public function __construct( $em, $name = null) {
+    public function __construct($em, $name = null)
+    {
         parent::__construct($name);
         $this->em = $em;
     }

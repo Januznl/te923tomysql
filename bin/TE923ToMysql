@@ -5,21 +5,40 @@ require __DIR__.'/../vendor/autoload.php';
 
 use TE923ToMysql\Command;
 use Symfony\Component\Console\Application;
-use Symfony\Component\Yaml\Yaml;
-use Doctrine\ORM\Tools\Setup;
-use Doctrine\ORM\EntityManager;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\Console\Event\ConsoleExceptionEvent;
+use Symfony\Component\Console\ConsoleEvents;
 
+$dispatcher = new EventDispatcher();
 
+$dispatcher->addListener(ConsoleEvents::EXCEPTION, function (ConsoleExceptionEvent $event) {
+    $output = $event->getOutput();
 
-$conn = Yaml::parse(__DIR__.'/../config/config.yml');
-$config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/src"), $isDevMode, null, null, false);
+    $command = $event->getCommand();
 
-$em = EntityManager::create($conn, $config);
+    $output->writeln(sprintf('Oops, exception thrown while running command <info>%s</info>', $command->getName()));
 
+    // get the current exit code (the exception code or the exit code set by a ConsoleEvents::TERMINATE event)
+    $exitCode = $event->getExitCode();
 
+    // change the exception to another one
+    //$event->setException(new \LogicException('Caught exception', $exitCode, $event->getException()));
+});
 
+$app = new Application('TE923ToMysql', '0.1-dev');
 
-$application = new Application('TE923ToMysql', '0.1-dev');
-$application->add(new Command\HelloCommand());
-$application->add(new Command\DoctrineCommand($em));
-$application->run();
+//Add dispatcher
+$app->setDispatcher($dispatcher);
+
+//Add global options
+$app->getDefinition()->addOptions([
+    new InputOption('--config', '-c', InputOption::VALUE_REQUIRED, 'Path to the configuration file', ''),
+]);
+
+//Add commands
+$app->add(new Command\HelloCommand());
+$app->add(new Command\DoctrineCommand());
+
+//Run application
+$app->run();
