@@ -12,9 +12,12 @@ abstract class ContainerAwareCommand extends Command
 {
     protected $app;
 
-    public function __construct($em, $name = null)
+    /* @var $di \Aura\Di\Container */
+    protected $di;
+
+    public function __construct($di, $name = null)
     {
         parent::__construct($name);
-        $this->em = $em;
+        $this->di = $di;
     }
 }

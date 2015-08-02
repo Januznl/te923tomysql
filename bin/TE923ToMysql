@@ -1,14 +1,26 @@
 #!/usr/bin/env php
 <?php
 
-require __DIR__.'/../vendor/autoload.php';
+chdir(realpath(__DIR__."/../"));
+
+require 'vendor/autoload.php';
 
 use TE923ToMysql\Command;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Console\Event\ConsoleExceptionEvent;
+use Symfony\Component\Console\Event\ConsoleCommandEvent;
 use Symfony\Component\Console\ConsoleEvents;
+use Aura\Di\ContainerBuilder;
+
+$builder = new ContainerBuilder;
+$container = $builder->newInstance(
+    array(),
+    array('TE923ToMysql\Lib\Config\DIConfig'),
+    ContainerBuilder::ENABLE_AUTO_RESOLVE
+);
+
 
 $dispatcher = new EventDispatcher();
 
@@ -26,6 +38,37 @@ $dispatcher->addListener(ConsoleEvents::EXCEPTION, function (ConsoleExceptionEve
     //$event->setException(new \LogicException('Caught exception', $exitCode, $event->getException()));
 });
 
+
+$dispatcher->addListener(ConsoleEvents::COMMAND, function (ConsoleCommandEvent $event) use ($container)  {
+    // get the input instance
+    $input = $event->getInput();
+
+    // get the output instance
+    $output = $event->getOutput();
+
+    // get the command to be executed
+    $command = $event->getCommand();
+
+    /**
+     * hack to get arguments/options available in event "console.command"
+     * @see https://github.com/symfony/symfony/issues/10695
+     */
+    $command->mergeApplicationDefinition();
+    $input->bind($command->getDefinition());
+    // end of hack
+
+    if ($input->hasOption('config')) {
+        $path = $input->getOption('config');
+        /** @var \TE923ToMysql\Lib\Config\Config $config */
+        $config = $container->get('config.settings');
+        $config->setConfigPath($path);
+
+    }
+
+    // get the application
+    $application = $command->getApplication();
+});
+
 $app = new Application('TE923ToMysql', '0.1-dev');
 
 //Add dispatcher
@@ -38,7 +81,7 @@ $app->getDefinition()->addOptions([
 
 //Add commands
 $app->add(new Command\HelloCommand());
-$app->add(new Command\DoctrineCommand());
+$app->add(new Command\DoctrineCommand($container));
 
 //Run application
 $app->run();

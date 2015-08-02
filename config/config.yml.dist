@@ -1,5 +1,20 @@
-driver:   "pdo_mysql"
-host:     "127.0.0.1"
-dbname:   ""
-user:     ""
-password: ""
+te923tomysql:
+  debug: false
+  doctrine:
+    debug: false
+    entityPaths:
+      - 'src/'
+    proxyDir: null
+    cacheType: 'none'
+    useSimpleAnnotationReader: false
+
+
+te923tool:
+  installationPath: "/usr/local/te923tool"
+
+doctrine:
+  driver:   "pdo_mysql"
+  host:     "127.0.0.1"
+  dbname:   "te923tomysql"
+  user:     ""
+  password: ""

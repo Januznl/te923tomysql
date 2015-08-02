@@ -5,7 +5,7 @@ namespace TE923ToMysql\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class DoctrineCommand extends DoctrineAwareCommand
+class DoctrineCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
@@ -17,10 +17,11 @@ class DoctrineCommand extends DoctrineAwareCommand
     
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        //Setup doctrine based on config file
-        $this->setupDoctrine($input);
+        $config = $this->di->get('config.settings');
+        var_dump($config);
 
-        $repo = $this->em->getRepository('TE923ToMysql\Entity\Archive');
+        $em = $this->di->get('doctrine.entityManager');
+        $repo = $em->getRepository('TE923ToMysql\Entity\Archive');
 
         /* @var $record \TE923ToMysql\Entity\Archive */
         $record  = $repo->find(1416520800);
