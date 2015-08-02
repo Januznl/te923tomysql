@@ -1510,7 +1510,7 @@ class Archive
     /**
      * Get rainbatterystatus
      *
-     * @return float 
+     * @return float
      */
     public function getRainbatterystatus()
     {
@@ -1533,7 +1533,7 @@ class Archive
     /**
      * Get outtempbatterystatus
      *
-     * @return float 
+     * @return float
      */
     public function getOuttempbatterystatus()
     {
@@ -1556,7 +1556,7 @@ class Archive
     /**
      * Get intempbatterystatus
      *
-     * @return float 
+     * @return float
      */
     public function getIntempbatterystatus()
     {
