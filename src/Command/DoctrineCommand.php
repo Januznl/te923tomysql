@@ -17,8 +17,16 @@ class DoctrineCommand extends ContainerAwareCommand
     
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+//        if ($input->hasOption('config')) {
+//            $path = $input->getOption('config');
+//            /** @var \TE923ToMysql\Lib\Config\Config $config */
+//            $config = $this->di->get('config.settings');
+//            $config->setConfigPath($path);
+//
+//        }
+
         $config = $this->di->get('config.settings');
-        var_dump($config);
+        //var_dump($config);
 
         $em = $this->di->get('doctrine.entityManager');
         $repo = $em->getRepository('TE923ToMysql\Entity\Archive');

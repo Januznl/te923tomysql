@@ -76,7 +76,7 @@ $app->setDispatcher($dispatcher);
 
 //Add global options
 $app->getDefinition()->addOptions([
-    new InputOption('--config', '-c', InputOption::VALUE_REQUIRED, 'Path to the configuration file', ''),
+    new InputOption('--config', '-c', InputOption::VALUE_REQUIRED, 'Path to the configuration file', 'config/config.yml.dist'),
 ]);
 
 //Add commands
